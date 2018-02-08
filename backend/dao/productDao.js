@@ -72,18 +72,18 @@ module.exports = class ProductDao {
                     error: err
                 });
             }
-            // if (!product) {
-            //     return error({
-            //         message: 'No such product.'
-            //     });
-            // }
+            if (!product) {
+                return error({
+                    message: 'No such product.'
+                });
+            }
 
             product.id = productToUpdate.id;
-            product.productr = productToUpdate.productr ? productToUpdate.productr : product.productr;
-            product.content = productToUpdate.content ? productToUpdate.content : product.content;
+            product.name = productToUpdate.name ? productToUpdate.name : product.name;
+            product.description = productToUpdate.content ? productToUpdate.content : product.content;
+            product.price = productToUpdate.price ? productToUpdate.price : product.price;
             product.created_at = productToUpdate.created_at ? productToUpdate.created_at : product.created_at;
-            product.location = productToUpdate.location ? productToUpdate.location : product.location;
-
+            
             product.save(function (err, product) {
                 if (err) {
                     return error({

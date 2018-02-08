@@ -40,20 +40,15 @@ module.exports = {
      */
     create: function (req,res) {
         let product  = {
-            content : req.body.content,
-            productr: req.body.productr,
-            created_at : req.body.created_at,
-            location : req.body.location
+            name : req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            created_at : req.body.created_at
         };
 
         productDao.create(product, function (created) {
 
             productDao.findById(created._id, function (found) {
-
-                //if(found.productr._doc)
-                //    found.productr = found.productr._doc; //Remove _doc of deep populated productr
-
-                io.emit('public-productment-sent',  found);
                 return res.status(201).json(found);
             }, function (error) {
                 return res.status(404).json(error);
@@ -70,10 +65,10 @@ module.exports = {
     update: function (req,res) {
         let product  = {
             id : req.params.id,
-            content : req.body.content,
-            productr: req.body.productr,
-            created_at : req.body.created_at,
-            location : req.body.location
+            name : req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            created_at : req.body.created_at
         };
         productDao.update(product, function (product) {
             return res.json(product);

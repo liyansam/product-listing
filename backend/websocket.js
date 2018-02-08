@@ -21,7 +21,7 @@ module.exports = function(io) {
 
             //         *
             //          * MESSAGEDAO ALREADY HANDLES BROADCAST OF EVENTS TO SUPPORT HEADLESS CLIENT
-                     
+
             //         messageDao.create(obj.data.message, function (createdMessage) {
             //                 console.log('New public message sent.');
             //             },

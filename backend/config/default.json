@@ -1,5 +1,4 @@
 {
-
     "mongo_url": "mongodb://test:123456@ds229648.mlab.com:29648/heroku_7hqb27dg",
     "errors": {
     }
