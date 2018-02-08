@@ -1,0 +1,13 @@
+{
+  "name": "sv4-esn-services",
+  "description": "Backend Services",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "config": "^1.25.1",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "mongoose": "^4.8.1",
+    "socket.io": "^1.7.2"
+  }
+}
