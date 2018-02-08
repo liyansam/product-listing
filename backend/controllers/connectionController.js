@@ -14,13 +14,13 @@ module.exports = class ConnectionController {
     }
 
     openHandler() {
-        console.log('MongoDB connection succesfull');
+        console.log('MongoDB Connection Successful');
         this.connected = true;
     }
 
     connect() {
         if (!this.connected) {
-            mongoose.connect(config.get('mongo_url'));
+            mongoose.connect(config.get('mongo_url'), { useMongoClient: true });
             this.db.on('error', this.errorHandler);
             this.db.once('open', this.openHandler);
         }

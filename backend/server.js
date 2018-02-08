@@ -48,8 +48,9 @@ app.get('/', function (req, res) {
 });
 
 var port = process.env.PORT || 3000;
+process.env.NODE_ENV = 'default';
 http.listen( port, function () {
-    console.log('ENV[' + process.env.NODE_ENV + '] Server started: ' + port);
+    console.log('Server Started: ' + port + ' ENV[' + process.env.NODE_ENV + ']');
 });
 
 /**

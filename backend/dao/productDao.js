@@ -46,16 +46,14 @@ module.exports = class ProductDao {
     create(productObj, success, error) {
 
         let productToCreate = productModel(productObj);
-        userModel.findOne({_id: productObj.id}, function (err, product) {
-            productToCreate.save(function (err, product) {
-                if (err) {
-                    return error({
-                        message: 'Error when creating product.',
-                        error: err
-                    });
-                }
-                return success(product._doc);
-            });
+        productToCreate.save(function (err, product) {
+            if (err) {
+                return error({
+                    message: 'Error when creating product.',
+                    error: err
+                });
+            }
+            return success(product._doc);
         });
 
     }
@@ -83,7 +81,7 @@ module.exports = class ProductDao {
             product.description = productToUpdate.content ? productToUpdate.content : product.content;
             product.price = productToUpdate.price ? productToUpdate.price : product.price;
             product.created_at = productToUpdate.created_at ? productToUpdate.created_at : product.created_at;
-            
+
             product.save(function (err, product) {
                 if (err) {
                     return error({
