@@ -1,5 +1,5 @@
 {
-  "name": "sv4-esn-services",
+  "name": "product-listing",
   "description": "Backend Services",
   "main": "server.js",
   "dependencies": {
