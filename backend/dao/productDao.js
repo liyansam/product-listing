@@ -78,7 +78,7 @@ module.exports = class ProductDao {
 
             product.id = productToUpdate.id;
             product.name = productToUpdate.name ? productToUpdate.name : product.name;
-            product.description = productToUpdate.content ? productToUpdate.content : product.content;
+            product.description = productToUpdate.description ? productToUpdate.description : product.description;
             product.price = productToUpdate.price ? productToUpdate.price : product.price;
             product.created_at = productToUpdate.created_at ? productToUpdate.created_at : product.created_at;
 

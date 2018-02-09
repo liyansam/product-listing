@@ -4,11 +4,12 @@ angular.module('myApp.productList', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/productList', {
             templateUrl: 'productList/productList.html',
-            controller: 'productListCtrl'
+            controller: 'ProductListCtrl'
         });
     }])
-    .controller('productListCtrl', ['$scope', '$rootScope', '$http', '$cookieStore', '$location', function ($scope, $rootScope, $http, $cookieStore, $location) {
+    .controller('ProductListCtrl', ['$scope', '$rootScope', '$http', '$cookieStore', '$location', function ($scope, $rootScope, $http, $cookieStore, $location) {
         $scope.conferences = [];
+
         $http.get('http://localhost:3000/products')
         .then(function successCallback(response){
             $scope.products = response.data;
@@ -21,7 +22,7 @@ angular.module('myApp.productList', ['ngRoute'])
             if (
                 (!$scope.searchText ||
                 (item.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) ||
-                (item.description.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
+                (item.description.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1))
             )
             {
                 return true;
@@ -29,12 +30,31 @@ angular.module('myApp.productList', ['ngRoute'])
             return false;
         };
 
-        $scope.add = function(){
+        $scope.add = function() {
             $location.path('/submitProduct');
-        }
+        };
 
-        $scope.update = function(product.id){
+        $scope.delete = function(id) {
+            console.log(id);
+            $http.delete('http://localhost:3000/products/' + id)
+            .then(function successCallback(response){
+                alert('Delete Successfully.');
+                $http.get('http://localhost:3000/products')
+                .then(function successCallback(response){
+                    $scope.products = response.data;
+                }, function errorCallback(response){
+                    console.log('load products error');
+                    alert('Error when getting product list');
+                });
+            }, function errorCallback(response){
+                console.log('delete product error');
+                alert('Error when deleting a product');
+            });
+        };
 
+        $scope.update = function(id) {
+            $rootScope.updateId = id;
+            $location.path('/updateProduct');
         }
 
     }]);

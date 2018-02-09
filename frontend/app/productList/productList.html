@@ -1,4 +1,4 @@
-<main role="main" ng-app="myApp.productList" ng-controller="productListCtrl">
+<main role="main" ng-app="myApp.productList" ng-controller="ProductListCtrl">
 
   <section class="jumbotron text-center bg-white">
     <div class="container">
@@ -6,7 +6,7 @@
       <p></p>
       <p class="lead text-muted">This website shows a list of products. You can view them or try add / edit/ delete manipulations. </p>
       <p>
-        <a href="#" class="btn btn-primary my-2" ng-click="add()">Add a New Product</a>
+        <a class="btn btn-primary text-white" ng-click="add()">Add a New Product</a>
       </p>
     </div>
   </section>
@@ -27,8 +27,8 @@
               <p class="card-text">{{product.description}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" ng-click="update(product._id)">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" ng-click="delete(product._id)">Delete</button>
                 </div>
                 <small class="text-muted">{{product.created_at}}</small>
               </div>

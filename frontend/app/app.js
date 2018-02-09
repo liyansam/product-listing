@@ -6,6 +6,7 @@ angular.module('myApp', [
     'ngCookies',
     'myApp.productList',
     'myApp.submitProduct',
+    'myApp.updateProduct',
     'myApp.version'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
