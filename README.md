@@ -24,14 +24,17 @@ PUT /products/:id update a product by its ID
 DELETE /products/:id delete a product by its ID
 
 # How to run:
+if you do not have node.js & npm first install them:
+
+see: https://nodejs.org/en/download/
+
 in /backend/:
 
-do 'npm install && npm start'
-
+do `npm install && npm start`
 
 in /frontend/:
 
-do 'npm start'
+do `npm start`
 
 then go to http://localhost:8000 to see the web app
 
