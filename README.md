@@ -1,4 +1,3 @@
-# product-listing
 # Product Listing Project Overview
 This project is a web application demo of product listing. Supports CRUD manipulations for products.
 
