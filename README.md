@@ -2,7 +2,7 @@
 This project is a web application demo of product listing. Supports CRUD manipulations for products.
 
 ## Architecture:
-Seperated front-end and back-end. Use MVC architecture in both front-end and back-end. In back-end I used Data Access Object to perfrom CRUD logics.
+Seperated front-end and back-end. Use MVC architecture in both front-end and back-end. In back-end I used Data Access Object to perfrom CRUD logics. Communication between front-end and back-end are through RESTful APIS.
 
 ## Technology:
 Front-end: Angular.js
