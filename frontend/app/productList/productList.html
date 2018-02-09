@@ -1,0 +1,81 @@
+<main role="main" ng-app="myApp.productList" ng-controller="productListCtrl">
+
+  <section class="jumbotron text-center bg-white">
+    <div class="container">
+      <h1 class="jumbotron-heading">Product List</h1>
+      <p></p>
+      <p class="lead text-muted">This website shows a list of products. You can view them or try add / edit/ delete manipulations. </p>
+      <p>
+        <a href="#" class="btn btn-primary my-2" ng-click="add()">Add a New Product</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <br>
+      <input type="text" class="form-control" placeholder="Keyword Search" ng-model="searchText">
+      <br>
+      <div class="row">
+
+        <div class="col-md-4" ng-repeat="product in products | filter:search">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="card.svg" alt="Card image cap">
+            <div class="card-body">
+              <h4>{{product.name}}</h4>
+              <h5>Price: $<a>{{product.price}}</a></h5>
+              <p class="card-text">{{product.description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                </div>
+                <small class="text-muted">{{product.created_at}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- <div class="container">
+    <div class="jumbotron">
+        <h4>Show conferences in status:</h4>
+        <select class="form-control" ng-model="statusSelected">
+            <option value="">All Status</option>
+            <option value="active">Active</option>
+            <option value="archived">Archived</option>
+        </select>
+        <br>
+        <input type="text" class="form-control" placeholder="Keyword Search" ng-model="searchText">
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Conference Acronym</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="conference in conferences | filter:search">
+                <td>{{conference.acronym}}</td>
+                <td>{{conference.location}}</td>
+                <td>{{conference.conference_date}}</td>
+                <td>{{conference.status}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="showPapers(conference.acronym)">Papers</button>
+                    <button type="button" class="btn btn-info" ng-if="user.role=='reviewer'" ng-click="review(conference.acronym)">Review</button>
+                    <button type="button" class="btn btn-danger"  ng-if="user.role=='administrator'" ng-click="admin(conference.id)">Admin</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
