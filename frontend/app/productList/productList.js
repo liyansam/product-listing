@@ -8,11 +8,15 @@ angular.module('myApp.productList', ['ngRoute'])
         });
     }])
     .controller('ProductListCtrl', ['$scope', '$rootScope', '$http', '$cookieStore', '$location', function ($scope, $rootScope, $http, $cookieStore, $location) {
-        $scope.conferences = [];
+        $scope.products = [];
 
         $http.get('http://localhost:3000/products')
         .then(function successCallback(response){
             $scope.products = response.data;
+            $scope.products.forEach(function(e){
+                var myDate = new Date(e.created_at);
+                e.created_at_string = myDate.toDateString();
+            });
         }, function errorCallback(response){
             console.log('load products error');
             alert('Error when getting product list');
@@ -38,7 +42,6 @@ angular.module('myApp.productList', ['ngRoute'])
             console.log(id);
             $http.delete('http://localhost:3000/products/' + id)
             .then(function successCallback(response){
-                alert('Delete Successfully.');
                 $http.get('http://localhost:3000/products')
                 .then(function successCallback(response){
                     $scope.products = response.data;
@@ -55,6 +58,65 @@ angular.module('myApp.productList', ['ngRoute'])
         $scope.update = function(id) {
             $rootScope.updateId = id;
             $location.path('/updateProduct');
+        };
+
+        $scope.sortByPriceHigh = function() {
+            $scope.products.sort(function(a, b){
+                var keyA = a.price,
+                    keyB = b.price;
+                // Compare the 2 dates
+                if(keyA < keyB) return 1;
+                if(keyA > keyB) return -1;
+                return 0;
+            });
+        };
+
+        $scope.sortByPriceLow = function() {
+            $scope.products.sort(function(a, b){
+                var keyA = a.price,
+                    keyB = b.price;
+                // Compare the 2 dates
+                if(keyA < keyB) return -1;
+                if(keyA > keyB) return 1;
+                return 0;
+            });
+        };
+
+        $scope.sortByDateNew = function() {
+            $scope.products.sort(function(a, b){
+                var keyA = new Date(a.created_at),
+                    keyB = new Date(b.created_at);
+                // Compare the 2 dates
+                if(keyA < keyB) return 1;
+                if(keyA > keyB) return -1;
+                return 0;
+            });
+        };
+
+        $scope.sortByDateOld = function() {
+            $scope.products.sort(function(a, b){
+                var keyA = new Date(a.created_at),
+                    keyB = new Date(b.created_at);
+                // Compare the 2 dates
+                if(keyA < keyB) return -1;
+                if(keyA > keyB) return 1;
+                return 0;
+            });
+        };
+
+        $scope.formatDate = function(date) {
+            var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+            ];
+
+            var day = date.getDate();
+            var monthIndex = date.getMonth();
+            var year = date.getFullYear();
+
+            return monthNames[monthIndex] + ' ' + day + " " + year;
         }
 
     }]);

@@ -12,7 +12,6 @@ angular.module('myApp.submitProduct', ['ngRoute'])
             $http.post('http://localhost:3000/products', JSON.stringify($scope.product))
             .then(function successCallback(response){
                 console.log(response);
-                alert('Submit New Product Success!')
                 $location.path('/productList');
             }, function errorCallback(response){
                 console.log('product submit error');

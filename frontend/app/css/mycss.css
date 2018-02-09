@@ -1,2 +1,8 @@
 /* app css stylesheet */
 
+.my-jumbotron {
+    background-image: url(../img/background.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

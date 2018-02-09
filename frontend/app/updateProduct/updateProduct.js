@@ -21,7 +21,6 @@ angular.module('myApp.updateProduct', ['ngRoute'])
             $http.put('http://localhost:3000/products/' + $rootScope.updateId, JSON.stringify($scope.product))
             .then(function successCallback(response){
                 console.log(response);
-                alert('Update Successfully!')
                 $location.path('/productList');
             }, function errorCallback(response){
                 console.log('product update error');
